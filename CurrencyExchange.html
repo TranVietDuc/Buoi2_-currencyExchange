@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Money_Exchange_Web</title>
+</head>
+<body>
+<script type="text/javascript">
+    function Convert()
+    {
+        var fromCurrency = document.getElementById("select1").value;  // Nhap loai tien muon doi
+        var toCurrency = document.getElementById("select2").value;  // Nhap vao loai tien muon doi ra
+        var amount = document.getElementById("amount").value;      //Nhap so tien muon doi
+        if (fromCurrency === "USD" && toCurrency === "VND")               //Kiem tra xem co phai doi tu USD sang VND ko
+        {
+            var result = amount * 23000;                          //Tnh theo ti gia 23000
+        }
+        else
+        {
+            if (fromCurrency === "VND" && toCurrency === "USD")          // Kiem tra truong doi tu VND sang USD
+            {
+                result = amount / 23000;
+            }
+            else                                                       // Cac truong hop doi tien khac
+                result = amount;
+        }
+        document.getElementById("result").innerText = result + " " + toCurrency;    // Thong bao ket qua ra man hinh
+    }
+</script>
+<div>
+    <h1>Currency_Exchange_Web</h1>                                      //Tao hop thoai nhap so luong tien muon doi
+    Amount: <input id="amount" type="text" >
+    <br>
+    From Currency:
+    <select id="select1">
+        <option value="VND">VND</option>
+        <option value="USD" selected="selected">USD</option>              //Nhap don vi tien muon dem doi
+    </select>
+    <br>
+    To Currency:
+    <select id="select2">                                                 // Nhap don vi tien muon doi ra
+        <option value="VND" selected="selected">VND</option>
+        <option value="USD">USD</option>
+    </select>
+    <br>
+    <button id="button" onclick="Convert();">Convert</button>             // Tao nut Convert
+    <br>
+    Result: <div id="result"></div>                                       // Noi in ket qua
+</div>
+</body>
+</html>
